@@ -1,0 +1,18 @@
+Apa output dari kode berikut? printf(Vortexis 25);#Vortexis 25#Vortexis25#Error#Vortexis#3
+Penulisan variabel integer yang benar adalah#int salah;#integer benar;#nilai = integer;#integer int angka;#1
+Manakah penamaan variabel yang tidak valid?#josgandhos#_vortexis#25_infor#konsep_Pemrograman#3
+Jika ingin menggunakan tipe data float, format apa yang digunakan untuk menerima dan menampilkan data?#%d#%f#%p#%c#2
+Operator manakah yang digunakan untuk membandingkan nilai "tidak sama dengan"?#==#>=#<=#!=#4
+Diberikan array: int bil_genap[4] = {2, 4, 6, 8}. Berapa nilai dari bil_genap[1]?#2#4#6#8#2
+Apa fungsi "&" jika diletakkan di awal variabel?#Mengambil alamat memori variabel#Membuat variabel baru#Mendeklarasikan pointer#Mengambil nilai variabel#1
+Struktur perulangan mana yang pasti dijalankan setidaknya satu kali?#do-while#if-else#for#while#1
+Manakah operator logika dari OR?#&&#&#!#||#4
+Fungsi dengan tipe data apa yang tidak mengembalikan nilai?#int#main#void#null#3
+malloc adalah fungsi dari library?#string.h#stdlib.h#stdio.h#strcpy#2
+Apa nilai default dari variabel dengan tipe data int yang tidak diinisialisasi?#1#Random value#Garbage Value#null#3
+Apa yang terjadi jika menjalankan kode "ptr + 1"?#Alamat memori bertambah sebesar ukuran tipe data#Nilai variabel yang ditunjuk bertambah 1#Alamat memori bertambah 1 byte#Mengalokasikan alamat baru untuk pointer tersebut#1
+Perbedaan struct dan union secara umum adalah?#Struct tidak bisa menyimpan tipe data berbeda, union bisa#Struct lebih hemat memori dari union#Anggota union berbagi lokasi memori yang sama, struct tidak#Union hanya bisa untuk tipe data integer, struct bisa selain integer#3
+int arr[] = {10, 20, 30}; int *p = arr; int x = *p++; Berapakah nilai akhir dari variabel x?#30#20#11#10#4
+File header yang berfungsi untuk menangani input/output di C++?##include <stream>##include <iostream>##include <conio.h>##include <iostring>#2
+Berikut tanda untuk mendeklarasikan array di C++ adalah?#{}#||#[]#()#3
+Output dari program berikut: int X; X = 3; cout << "Nilai X = " << X << endl;#Nilai X=X#Nilai X = 3#Nilai 3 = X#Semua salah#2
