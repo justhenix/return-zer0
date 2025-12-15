@@ -349,7 +349,6 @@ int muatPermainan(dataPemain *p, int *indeksSoal) {
     return 1;
 }
 
-
 int bukaSoal(Soal *daftarSoal) {
     FILE *file;
     int jumlahSoal = 0;
