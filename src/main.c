@@ -89,7 +89,9 @@ void sistemPermainan(dataPemain *p, Soal *daftarSoal, int totalSoal);
 
 // Simpan dan Buka File
 void simpanPermainan(dataPemain *p, int indeksSoal);
+int muatPermainan(dataPemain *p, int *indeksSoal);
 int bukaPermainan(void);
+void gameOverFile();
 void parseLine(char *line, Soal *s); // Parsing dari file
 int bukaSoal(Soal *daftarSoal);
 void updateLeaderboard(char *nama, int skor, int level);
@@ -151,8 +153,13 @@ int main(void) {
 
             case LOAD:
                 CLEAR_SCREEN();
-                printf(RED "\nFitur Load (requesting help)\n" CLR);
-                delay(DELAY_SLOW);
+                int indeksSoal = 0;
+                printf(RED "\nMemuat data pemain...\n" CLR);
+                delay(DELAY_FAST);
+                 if (muatPermainan(&player, &indeksSoal)) {
+                    sistemPermainan(&player, daftarSoal, jumlahSoal);
+                 }
+                delay(DELAY_MEDIUM);
                 break;
 
             case LEADERBOARD:
@@ -271,6 +278,7 @@ void sistemPermainan(dataPemain *p, Soal *daftarSoal, int totalSoal) {
             if (p->nyawa == 0) {
                 printf(RED "\nGAME OVER!\n" CLR);
                 updateLeaderboard(p->nama, p->skor, levelDisplay);
+                gameOverFile();
                 delay(DELAY_VSLOW);
                 return;
             }
@@ -307,6 +315,50 @@ void simpanPermainan(dataPemain *p, int indeksSoal) {
 
     fclose(file);
 }
+
+int muatPermainan(dataPemain *p, int *indeksSoal) {
+    FILE *file = fopen(PATH_SAVE, "r");
+
+    if (file == NULL) {
+        printf(RED "Tidak ada data save!\n" CLR);
+        delay(DELAY_SLOW);
+        return 0;
+    }
+
+    int hasil = fscanf(file, "%99[^#]#%u#%d#%u#%u#%u",
+            p->nama,
+            &p->level,
+            indeksSoal,
+            &p->skor,
+            &p->nyawa,
+            &p->jumlahBenar);
+
+    fclose(file);
+
+    if (hasil != 6) {
+        printf(RED "Data save rusak!\n" CLR);
+        delay(DELAY_SLOW);
+        return 0;
+    }
+
+    printf(GREEN "\n[LOAD BERHASIL]\n" CLR);
+    printf("Player : %s\n", p->nama);
+    printf("Level  : %u\n", p->level);
+    printf("Soal   : %d\n", *indeksSoal + 1);
+    printf("Skor   : %u\n", p->skor);
+    printf("Nyawa  : %u\n", p->nyawa);
+
+    delay(DELAY_SLOW);
+    return 1;
+}
+
+
+void gameOverFile() {
+
+    remove(PATH_SAVE);
+    delay(DELAY_SLOW);
+}
+
 
 int bukaSoal(Soal *daftarSoal) {
     FILE *file;
