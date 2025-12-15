@@ -292,7 +292,6 @@ void simpanPermainan(dataPemain *p, int indeksSoal) {
         return;
     }
 
-    // FORMAT BARU: Tambah #%u di akhir untuk jumlahBenar
     fprintf(file, "%s#%u#%d#%u#%u#%u",
             p->nama,
             p->level,
@@ -323,7 +322,7 @@ int bukaSoal(Soal *daftarSoal) {
     printf("\nMemuat...");
     delay(DELAY_MEDIUM);
     while (fgets(buffer, sizeof(buffer), file)) {
-        // Hapus newline di akhir baris jika ada
+
         buffer[strcspn(buffer, "\n")] = 0;
 
         parseLine(buffer, &daftarSoal[jumlahSoal]);
@@ -405,7 +404,6 @@ void lihatLeaderboard(void) {
     char buffer[200];
     int rank = 1;
 
-    // TAMPILAN HEADER KEREN
     printf(BLUE "\n================================\n" CLR);
     printf(YELLOW "   HALL OF FAME - RETURN ZER0   \n" CLR);
     printf(BLUE "================================\n" CLR);
