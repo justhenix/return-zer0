@@ -80,17 +80,16 @@ enum menu {
     EXIT
 };
 
-// Menu dan Tampilan
+// Tampilan Judul
 void banner(void);
-// more to come?
 
 // Sistem Permainan
-void sistemPermainan(dataPemain *p, Soal *daftarSoal, int totalSoal);
+void sistemPermainan(dataPemain *p, Soal *daftarSoal, int totalSoal, int startIndex);
 
 // Simpan dan Buka File
 void simpanPermainan(dataPemain *p, int indeksSoal);
 int muatPermainan(dataPemain *p, int *indeksSoal);
-int bukaPermainan(void);
+void hapusSaveFile();
 void parseLine(char *line, Soal *s); // Parsing dari file
 int bukaSoal(Soal *daftarSoal);
 void updateLeaderboard(char *nama, int skor, int level);
@@ -147,15 +146,16 @@ int main(void) {
                 player.level = 0;
                 player.jumlahBenar = 0;
 
-                sistemPermainan(&player, daftarSoal, jumlahSoal);
+                sistemPermainan(&player, daftarSoal, jumlahSoal, 0);
                 break;
 
             case LOAD:
                 CLEAR_SCREEN();
                 int indeksSoal = 0;
-                printf(RED);
+                printf(YELLOW "\nMemuat data pemain...\n" CLR);
+                delay(DELAY_FAST);
                  if (muatPermainan(&player, &indeksSoal)) {
-                    sistemPermainan(&player, daftarSoal, jumlahSoal);
+                    sistemPermainan(&player, daftarSoal, jumlahSoal, indeksSoal);
                  }
                 delay(DELAY_MEDIUM);
                 break;
@@ -205,15 +205,15 @@ void banner(void) {
 }
 
 // Sistem Permainan
-void sistemPermainan(dataPemain *p, Soal *daftarSoal, int totalSoal) {
-    int i = (p->level > 0) ? p->level : 0;
+void sistemPermainan(dataPemain *p, Soal *daftarSoal, int totalSoal, int startIndex) {
+    int i = startIndex;
 
     for (; i < totalSoal; i++) {
         CLEAR_SCREEN();
         banner();
 
-        int levelDisplay = 1;
-        int poinSoal = 1;
+        unsigned int levelDisplay = 1;
+        unsigned int poinSoal = 1;
         char tipeLevel[20] = "DASAR";
 
         if (i < 5) {
@@ -276,6 +276,7 @@ void sistemPermainan(dataPemain *p, Soal *daftarSoal, int totalSoal) {
             if (p->nyawa == 0) {
                 printf(RED "\nGAME OVER!\n" CLR);
                 updateLeaderboard(p->nama, p->skor, levelDisplay);
+                hapusSaveFile();
                 delay(DELAY_VSLOW);
                 return;
             }
@@ -308,7 +309,7 @@ void simpanPermainan(dataPemain *p, int indeksSoal) {
     printf(GREEN "\n[DATA TERSIMPAN] %s berada di Level %u, Soal ke-%d\n"
         CLR, p->nama, p->level, indeksSoal + 1);
 
-    delay(DELAY_SLOW);
+    delay(DELAY_VSLOW);
 
     fclose(file);
 }
@@ -348,6 +349,18 @@ int muatPermainan(dataPemain *p, int *indeksSoal) {
     delay(DELAY_SLOW);
     return 1;
 }
+
+
+void hapusSaveFile() {
+    FILE *file = fopen(PATH_SAVE, "r");
+    if (file != NULL) {
+        fclose(file);
+        remove(PATH_SAVE);
+        printf(YELLOW "\n[Save file dihapus karena Game Over]\n" CLR);
+    }
+    delay(DELAY_SLOW);
+}
+
 
 int bukaSoal(Soal *daftarSoal) {
     FILE *file;
