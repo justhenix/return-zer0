@@ -74,15 +74,15 @@ Return Zer0 merupakan permainan kuis berbasis terminal yang bertujuan untuk meng
 ## Cara Menggunakan Program
     1. Setelah program berjalan, pengguna akan melihat menu utama yang berisi beberapa pilihan fitur.
     2. Pilih menu berdasarkan fitur yang diinginkan:
-        1) Mulai Baru (New Game)
+        - Mulai Baru (New Game)
             Pengguna memasukkan nama pemain, kemudian permainan dimulai dari level dasar dengan jumlah nyawa 3 dan skor awal. 
-        2) Lanjutkan (Load Game)
+        - Lanjutkan (Load Game)
             Program memuat data pemain yang telah disimpan sebelumnya dan melanjutkan permainan dari level terakhir.
-        3) Leaderboard
+        - Leaderboard
             Program menampilkan daftar 5 pemain dengan skor tertinggi beserta level yang dicapai.
-        4) Credits
+        - Credits
             Program menampilkan informasi mengenai tim pembuat.
-        5) Keluar
+        - Keluar
             Program dihentikan dan pengguna keluar dari aplikasi.
     3. Saat permainan berlangsung, pengguna menjawab soal pilihan ganda dengan memasukkan angka sesuai opsi jawaban.
     4. Program akan memberikan umpan balik atas jawaban, memperbarui skor dan nyawa, serta melanjutkan ke soal berikutnya.
