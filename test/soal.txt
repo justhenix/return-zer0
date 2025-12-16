@@ -16,3 +16,5 @@ int arr[] = {10, 20, 30}; int *p = arr; int x = *p++; Berapakah nilai akhir dari
 File header yang berfungsi untuk menangani input/output di C++?##include <stream>##include <iostream>##include <conio.h>##include <iostring>#2
 Berikut tanda untuk mendeklarasikan array di C++ adalah?#{}#||#[]#()#3
 Output dari program berikut: int X; X = 3; cout << "Nilai X = " << X << endl;#Nilai X=X#Nilai X = 3#Nilai 3 = X#Semua salah#2
+Manakah cara yang benar untuk mendeklarasikan pointer di C++?#int ptr*;#int* ptr;#ptr int*;#pointer int ptr;#2
+Apa perbedaan utama antara C dan C++?#C++ mendukung pemrograman berorientasi objek, C tidak#C lebih cepat dari C++#C++ tidak bisa menggunakan pointer#C tidak mendukung fungsi#1
