@@ -2,7 +2,7 @@
 
 ![Language](https://img.shields.io/badge/Language-C-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Status](https://img.shields.io/badge/Status-Active-orange.svg)
+![Status](https://img.shields.io/badge/Status-Archived-orange.svg)
 
 > **Uji pemahaman bahasa C-mu sebelum `return 0;` !**
 
